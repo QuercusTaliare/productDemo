@@ -6,6 +6,7 @@ import Header from './components/Header';
 import MainNav from './components/MainNav';
 import Home from './components/Home';
 import Products from './components/Products';
+import addProduct from './components/addProduct';
 
 class App extends Component {
   
@@ -19,18 +20,14 @@ class App extends Component {
 
         <main>
 
-          <MainNav />
-
           <BrowserRouter>
-
-            <Switch>
-              
-              <Route exact path="/" component={Home}></Route>
-              <Route path="/products" component={Products}></Route>
-            
-            </Switch>  
-
           
+            <MainNav />
+
+            <Route exact path="/" component={Home}></Route>
+            <Route exact path="/products" component={Products}></Route>
+            <Route path="/products/addProduct" component={addProduct}></Route>
+              
           </BrowserRouter>
 
         </main>

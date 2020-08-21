@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { BrowserRouter, Link } from 'react-router-dom';
 
 class MainNav extends Component {
 
@@ -8,9 +9,9 @@ class MainNav extends Component {
 
       <nav>
         <ul>
-          <li>Home</li>
+          <li><Link to={"/"}>Home</Link></li>
           <li>Orders</li>
-          <li>Products</li>
+          <li><Link to={"/products"}>Products</Link></li>
           <li>Customers</li>
           <li>Analytics</li>
         </ul>
