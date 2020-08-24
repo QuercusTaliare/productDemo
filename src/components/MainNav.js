@@ -3,6 +3,8 @@ import { BrowserRouter, Link } from 'react-router-dom';
 
 class MainNav extends Component {
 
+  
+
   render() {
 
     return (
@@ -16,6 +18,8 @@ class MainNav extends Component {
           <li>Analytics</li>
         </ul>
       </nav>
+
+
 
     )
 
