@@ -15,17 +15,20 @@ class addProduct extends Component {
 
             <legend>Basic Info</legend>
 
-            <label htmlFor="productTitle">
-              <span>Title</span>
-              <input type="text" id="productTitle" />
-            </label>
+            <div>
 
-            <label htmlFor="productDesc">
-              <span>Description</span>
-              <textarea name="productDesc" id="productDesc" cols="30" rows="10"></textarea>
-            </label>
+              <label htmlFor="productTitle">
+                <span>Title</span>
+                <input type="text" id="productTitle" />
+              </label>
+
+              <label htmlFor="productDesc">
+                <span>Description</span>
+                <textarea name="productDesc" id="productDesc" cols="30" rows="10"></textarea>
+              </label>
+
+            </div>
             
-
           </fieldset>
 
         </form>
