@@ -8,11 +8,37 @@ class addProduct extends Component {
     super();
     this.state = {
 
-      productTitle: ""
+      productTitle: "",
+      productDesc: "",
+      photo: "",
+      price: "",
+      comparePrice: "",
+      costPerItem: "",
+      tax: false,
+      SKU: "",
+      barcode: "",
+      quantity: false,
+      variantOptionsCheck: false,
+      SEOoptions: false,
+      productType: "",
+      productVendor: "",
+      productCollections: [],
+      tags: []
+
+
+
 
     }
 
   }
+
+  // componentDidUpdate() {
+
+  //   if(variantOptionsCheck) {
+
+  //   }
+
+  // }
 
   handleChange = (e) => {
 
@@ -20,6 +46,26 @@ class addProduct extends Component {
     this.setState({
       [e.currentTarget.name]: e.currentTarget.value
     })
+
+  }
+
+  handleCheck = (e) => {
+
+    this.setState({
+      [e.target.name]: e.target.checked
+    })
+
+  }
+
+  handleClick = (e) => {
+
+    e.preventDefault();
+
+    let SEOoptions = this.state.SEOoptions;
+
+    SEOoptions = !SEOoptions;
+
+    this.setState({ SEOoptions });
 
   }
 
@@ -56,10 +102,9 @@ class addProduct extends Component {
                 <label htmlFor="productDesc">
                   <span>Description</span>
                   <textarea 
+                    id="productDesc"
                     name="productDesc" 
-                    id="productDesc" 
-                    name="productDesc" 
-                    className="basicInfo__productTitle" 
+                    className="basicInfo__productDesc" 
                     cols="30" 
                     rows="10"
                     onChange={this.handleChange}
@@ -87,8 +132,16 @@ class addProduct extends Component {
 
               <div>
 
-                <img src="" alt=""/>
-                <button>Add File</button>
+                <img src={this.state.photo} alt=""/>
+                <label htmlFor="photo">
+                  <span className="sr-only">Upload a photo</span>
+                  <input 
+                    type="file" 
+                    id="photo" 
+                    name="photo"
+                    onChange={this.handleChange}
+                  />
+                </label>
                 <p>or drop files to upload</p>
 
               </div>
@@ -104,12 +157,22 @@ class addProduct extends Component {
 
                 <label htmlFor="price">
                   <span>Price</span>
-                  <input type="text" id="price" />
+                  <input 
+                    type="text" 
+                    id="price" 
+                    name="price" 
+                    onChange={this.handleChange} 
+                  />
                 </label>
 
                 <label htmlFor="comparePrice">
                   <span>Compare at price</span>
-                  <input type="text" id="comparePrice"/>
+                  <input 
+                    type="text" 
+                    id="comparePrice" 
+                    name="comparePrice" 
+                    onChange={this.handleChange} 
+                  />
                 </label>
 
               </div>
@@ -120,7 +183,12 @@ class addProduct extends Component {
 
                   <label htmlFor="costPerItem">
                     <span>Cost per Item</span>
-                    <input type="text" id="costPerItem"/>
+                    <input 
+                      type="text" 
+                      id="costPerItem"
+                      name="costPerItem"
+                      onChange={this.handleChange}
+                    />
                   </label>
                   <p>Customers won't see this</p>
 
@@ -142,7 +210,12 @@ class addProduct extends Component {
 
                 
                 <label htmlFor="tax">
-                  <input type="checkbox" id="tax" />
+                  <input 
+                    type="checkbox" 
+                    id="tax" 
+                    name="tax"
+                    onChange={this.handleCheck} 
+                  />
                   <span>Charge tax on this product</span>
                 </label>
 
@@ -159,16 +232,31 @@ class addProduct extends Component {
 
                 <label htmlFor="SKU">
                   <span>SKU (Stock Keeping Unit)</span>
-                  <input type="text" id="SKU" />
+                  <input 
+                    type="text" 
+                    id="SKU"
+                    name="SKU"
+                    onChange={this.handleChange}
+                  />
                 </label>
 
                 <label htmlFor="barcode">
                   <span>Barcode (ISBN, UPC, GTIN, etc.)</span>
-                  <input type="text" id="barcode" />
+                  <input 
+                    type="text" 
+                    id="barcode" 
+                    name="barcode" 
+                    onChange={this.handleChange} 
+                  />
                 </label>
 
                 <label htmlFor="quantity">
-                  <input type="checkbox" id="quantity" />
+                  <input 
+                    type="checkbox" 
+                    id="quantity" 
+                    name="quantity" 
+                    onChange={this.handleCheck} 
+                  />
                   <span>Track Quantity</span>
                 </label>
 
@@ -182,38 +270,46 @@ class addProduct extends Component {
 
                 <legend>Variants</legend>
                 <label htmlFor="variantOptionsCheck">
-                  <input type="checkbox" id="variantOptionsCheck" />
+                  <input type="checkbox" id="variantOptionsCheck" name="variantOptionsCheck" onChange={this.handleCheck} />
                   <span>This product has multiple options, like different sizes or colors</span>
                 </label>
 
               </div>
 
-              <div>
+              {/* When the Variants checkbox is checked, more Variant form elements will appear */}
+              {
+                this.state.variantOptionsCheck 
+                
+                && 
 
-                <h4>Options</h4>
+                <div className="variants__options">
 
-                <ul>
+                  <h4>Options</h4>
 
-                  <li>
+                  <ul>
 
-                    <label htmlFor="variantOptionSize--one">
-                      <span>Option 1</span>
-                      <input type="text" id="variantOptionSize--one" />
-                    </label>
+                    <li>
 
-                    <label htmlFor="variantOptionsList--one">
-                      <span>Option 1 List</span>
-                      <input type="text" id="variantOptionsList--one" placeholder="Separate options with a comma" />
-                    </label>
+                      <label htmlFor="variantOptionSize--one">
+                        <span>Option 1</span>
+                        <input type="text" id="variantOptionSize--one" />
+                      </label>
 
-                  </li>
+                      <label htmlFor="variantOptionsList--one">
+                        <span>Option 1 List</span>
+                        <input type="text" id="variantOptionsList--one" placeholder="Separate options with a comma" />
+                      </label>
 
-                </ul>
+                    </li>
 
-                {/* This button would need to dynamically add another option to the list above */}
-                <button>Add another option</button>
+                  </ul>
 
-              </div>
+                  {/* This button would need to dynamically add another option to the list above */}
+                  <button>Add another option</button>
+
+                </div>
+
+              }
 
             </fieldset>
 
@@ -226,7 +322,7 @@ class addProduct extends Component {
 
                   <legend>Search Engine listing preview</legend>
 
-                  <button>Edit website SEO</button>
+                  <button onClick={this.handleClick}>Edit website SEO</button>
 
                 </div>
 
@@ -236,42 +332,46 @@ class addProduct extends Component {
 
               </div>
 
-              <div className="SEO__options">
+              {
+                this.state.SEOoptions
 
-                <div>
+                &&
 
-                  <label htmlFor="pageTitle">
-                    <span>Page title</span>
-                    <input type="text" id="pageTitle" />
-                  </label>
+                <div className="SEO__options">
 
-                  <p>0 of 70 characters used</p>
+                  <div>
+
+                    <label htmlFor="pageTitle">
+                      <span>Page title</span>
+                      <input type="text" id="pageTitle" />
+                    </label>
+
+                    <p>0 of 70 characters used</p>
+
+                  </div>
+
+                  <div>
+
+                    <label htmlFor="SEO__description">
+                      <span>Description</span>
+                      <input type="text" id="SEO__description" />
+                    </label>
+
+                    <p>0 of 320 characters used</p>
+
+                  </div>
+
+                  <div>
+
+                    <label htmlFor="SEO__URL">
+                      <span>URL and handle</span>
+                      <input type="text" id="SEO__URL" placeholder="link from STATE" />
+                    </label>
+
+                  </div>
 
                 </div>
-
-                <div>
-
-                  <label htmlFor="SEO__description">
-                    <span>Description</span>
-                    <input type="text" id="SEO__description" />
-                  </label>
-
-                  <p>0 of 320 characters used</p>
-
-                </div>
-
-                <div>
-
-                  <label htmlFor="SEO__URL">
-                    <span>URL and handle</span>
-                    <input type="text" id="SEO__URL" placeholder="link from STATE"/>
-                  </label>
-
-                </div>
-
-              </div>
-
-              
+              }
 
             </fieldset>
 
@@ -289,9 +389,14 @@ class addProduct extends Component {
 
                 <div>
 
-                  <label htmlFor="organization__productType">
+                  <label htmlFor="productType">
                     <span>Product type</span>
-                    <input type="text" id="organization__productType" />
+                    <input 
+                      type="text" 
+                      id="productType"
+                      name="productType"
+                      onChange={this.handleChange} 
+                    />
                   </label>
                   <button>Arrows Image</button>
 
@@ -299,9 +404,14 @@ class addProduct extends Component {
 
                 <div>
 
-                  <label htmlFor="organization__vendor">
+                  <label htmlFor="productVendor">
                     <span>Vendor</span>
-                    <input type="text" id="organization__vendor" />
+                    <input 
+                      type="text" 
+                      id="productVendor"
+                      name="productVendor"
+                      onChange={this.handleChange} 
+                    />
                   </label>
                   <button>Arrows Image</button>
 
@@ -310,9 +420,13 @@ class addProduct extends Component {
               </div>
 
               <div>
-                <label htmlFor="organization__collections">
+                <label htmlFor="productCollections">
                   <span>Collections</span>
-                  <input type="text" id="organization__collections" />
+                  <input 
+                    type="text" 
+                    id="productCollections"
+                    name="productCollections"
+                  />
                 </label>
                 <p>Add this product to a collection so it’s easy to find in your store.</p>
                 <ul>
@@ -321,9 +435,9 @@ class addProduct extends Component {
               </div>
 
               <div>
-                <label htmlFor="organization__tags">
+                <label htmlFor="tags">
                   <span>Tags</span>
-                  <input type="text" id="organization__tags" />
+                  <input type="text" id="tags" name="tags" />
                 </label>
                 <ul>
                   {/* Empty list for new tags  */}
