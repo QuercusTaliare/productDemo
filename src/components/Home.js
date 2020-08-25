@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../styles/Home.css';
 
 class Home extends Component {
 
@@ -6,11 +7,14 @@ class Home extends Component {
 
     return (
 
-      <section>
-        <h2>Home Admin Page</h2>
-        <p>There's no place like home.</p>
-      </section>
+      <div className="home__container">
 
+        <section>
+          <h2>Home Admin Page</h2>
+          <p>There's no place like home.</p>
+        </section>
+
+      </div>
     )
 
   }

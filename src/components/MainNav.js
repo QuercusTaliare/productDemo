@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Link } from 'react-router-dom';
+import '../styles/MainNav.css';
 
 class MainNav extends Component {
 
@@ -9,7 +10,7 @@ class MainNav extends Component {
 
     return (
 
-      <nav>
+      <nav className="mainNav__nav">
         <ul>
           <li><Link to={"/"}>Home</Link></li>
           <li>Orders</li>

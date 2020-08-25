@@ -83,7 +83,7 @@ class addProduct extends Component {
 
     return (
 
-      <>
+      <div className="addProduct__container">
 
         <h2>Add Product</h2>
         <form action="">
@@ -92,13 +92,14 @@ class addProduct extends Component {
           <div>
 
             {/* BASIC INFO  */}
-            <fieldset>
+            <fieldset className="addProduct__basicInfoFieldset">
 
-              <div>
+              <div className="addProduct__subFormContainer">
 
                 <legend>Basic Info</legend>
+                
 
-                <label htmlFor="productTitle">
+                <label htmlFor="productTitle" class="addProduct__label">
                   <span>Title</span>
                   <input 
                     type="text" 
@@ -109,7 +110,7 @@ class addProduct extends Component {
                   />
                 </label>
 
-                <label htmlFor="productDesc">
+                <label htmlFor="productDesc" class="addProduct__label">
                   <span>Description</span>
                   <textarea 
                     id="productDesc"
@@ -474,7 +475,7 @@ class addProduct extends Component {
 
         </form>
 
-      </>
+      </div>
 
     )
 

@@ -21,12 +21,16 @@ class App extends Component {
         <main>
 
           <BrowserRouter>
-          
-            <MainNav />
 
-            <Route exact path="/" component={Home}></Route>
-            <Route exact path="/products" component={Products}></Route>
-            <Route path="/products/addProduct" component={addProduct}></Route>
+            <div className="app__mainContainer">
+
+              <MainNav />
+
+              <Route exact path="/" component={Home}></Route>
+              <Route exact path="/products" component={Products}></Route>
+              <Route path="/products/addProduct" component={addProduct}></Route>
+
+            </div>
               
           </BrowserRouter>
 

@@ -1,0 +1,7 @@
+.header__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--green);
+  padding: 20px 0;
+}
