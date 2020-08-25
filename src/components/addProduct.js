@@ -32,14 +32,6 @@ class addProduct extends Component {
 
   }
 
-  // componentDidUpdate() {
-
-  //   if(variantOptionsCheck) {
-
-  //   }
-
-  // }
-
   handleChange = (e) => {
 
     // This will update state everytime the form is altered
@@ -66,6 +58,24 @@ class addProduct extends Component {
     SEOoptions = !SEOoptions;
 
     this.setState({ SEOoptions });
+
+  }
+
+  addTags = (e) => {
+
+    if(e.key === 'Enter') {
+
+      e.preventDefault();
+      
+      let newTags = this.state.tags;
+
+      newTags.push(e.target.value);
+
+      this.setState({ tags: newTags });
+
+      e.target.value = "";
+
+    }
 
   }
 
@@ -437,10 +447,24 @@ class addProduct extends Component {
               <div>
                 <label htmlFor="tags">
                   <span>Tags</span>
-                  <input type="text" id="tags" name="tags" />
+                  <input 
+                    type="text" 
+                    id="tags" 
+                    name="tags"
+                    onKeyDown={this.addTags}
+                     
+                  />
                 </label>
                 <ul>
-                  {/* Empty list for new tags  */}
+                  {
+                    this.state.tags.map(tag => {
+                      return (
+                        <li>
+                          {tag}
+                        </li>
+                      )
+                    })
+                  }
                 </ul>
               </div>
 
