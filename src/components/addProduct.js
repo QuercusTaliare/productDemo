@@ -22,7 +22,6 @@ class addProduct extends Component {
       SEOoptions: false,
       productType: "",
       productVendor: "",
-      productCollections: [],
       tags: []
 
 
@@ -46,6 +45,34 @@ class addProduct extends Component {
     this.setState({
       [e.target.name]: e.target.checked
     })
+
+  }
+
+  handlePrice = (e) => {
+
+    const priceInCents = parseFloat(e.target.value) * 100;
+
+    this.setState({ [e.target.name]: priceInCents })
+
+  }
+
+  calculateMargin = (price, costPerItem) => {
+
+    return (
+      <span>
+        {(((parseInt(price) - parseInt(costPerItem)) / parseInt(price)) * 100)}%
+      </span>
+    )
+
+  }
+
+  calculateProfit = (price, costPerItem) => {
+
+    return (
+      <span>
+        ${(parseFloat(price) - parseFloat(costPerItem)).toFixed(2) / 100}
+      </span>
+    )
 
   }
 
@@ -101,7 +128,7 @@ class addProduct extends Component {
 
                   <legend className="addProduct__legend">Basic Info</legend>
                   
-                  <label htmlFor="productTitle" class="addProduct__label">
+                  <label htmlFor="productTitle" className="addProduct__label">
                     <span>Title</span>
                     <input 
                       type="text" 
@@ -112,7 +139,7 @@ class addProduct extends Component {
                     />
                   </label>
 
-                  <label htmlFor="productDesc" class="addProduct__label">
+                  <label htmlFor="productDesc" className="addProduct__label">
                     <span>Description</span>
                     <textarea 
                       id="productDesc"
@@ -174,7 +201,7 @@ class addProduct extends Component {
                       type="text" 
                       id="price" 
                       name="price" 
-                      onChange={this.handleChange} 
+                      onChange={this.handlePrice} 
                     />
                   </label>
 
@@ -184,7 +211,7 @@ class addProduct extends Component {
                       type="text" 
                       id="comparePrice" 
                       name="comparePrice" 
-                      onChange={this.handleChange} 
+                      onChange={this.handlePrice} 
                     />
                   </label>
 
@@ -200,7 +227,7 @@ class addProduct extends Component {
                         type="text" 
                         id="costPerItem"
                         name="costPerItem"
-                        onChange={this.handleChange}
+                        onChange={this.handlePrice}
                       />
                     </label>
                     <p>Customers won't see this</p>
@@ -211,11 +238,29 @@ class addProduct extends Component {
 
                     <p>
                       <span>Margin</span>
-                      <span>-</span>
+                      {
+                        (this.state.price) && (this.state.costPerItem)
+                        ?
+                        
+                        (() => this.calculateMargin(this.state.price, this.state.costPerItem))() 
+                        
+                        :
+                        
+                        "-"
+                      }
                     </p>
                     <p>
                       <span>Profit</span>
-                      <span>-</span>
+                      {
+                        (this.state.price) && (this.state.costPerItem)
+                          ?
+
+                          (() => this.calculateProfit(this.state.price, this.state.costPerItem))()
+
+                          :
+
+                          "-"
+                      }
                     </p>
                     
 
