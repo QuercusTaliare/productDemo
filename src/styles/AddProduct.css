@@ -2,17 +2,39 @@
   flex: 1 1 80%;
 }
 
-.addProduct__basicInfoFieldset {
+.addProduct__subFormContainer {
+
+  display: flex;
+
+}
+
+.addProduct__subFormMain {
+
+  flex: 1 1 80%;
+
+}
+
+.addProduct__subFormSide {
+
+  flex: 1 1 20%;
+
+}
+
+.addProduct__fieldset {
   margin: 2vw;
   border: none;
   border-radius: 4px;
   box-shadow: 2px 2px 10px rgba(63,63,68,0.5)
 }
 
-.addProduct__subFormContainer {
+.addProduct__subFieldsetContainer {
   display: flex;
   flex-direction: column;
 
+}
+
+.addProduct__legend {
+  font-size: 2rem;
 }
 
 .addProduct__label {

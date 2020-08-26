@@ -86,390 +86,395 @@ class addProduct extends Component {
       <div className="addProduct__container">
 
         <h2>Add Product</h2>
+
         <form action="">
 
-          {/* MAIN (LEFT) */}
-          <div>
+          <div className="addProduct__subFormContainer">
 
-            {/* BASIC INFO  */}
-            <fieldset className="addProduct__basicInfoFieldset">
+            {/* MAIN (LEFT) */}
+            <div className="addProduct__subFormElement addProduct__subFormMain">
 
-              <div className="addProduct__subFormContainer">
+              {/* BASIC INFO  */}
+              <fieldset className="addProduct__fieldset">
 
-                <legend>Basic Info</legend>
-                
+                <div className="addProduct__subFieldsetContainer">
 
-                <label htmlFor="productTitle" class="addProduct__label">
-                  <span>Title</span>
-                  <input 
-                    type="text" 
-                    id="productTitle" 
-                    name="productTitle" 
-                    className="basicInfo__productTitle" 
-                    onChange={this.handleChange}
-                  />
-                </label>
-
-                <label htmlFor="productDesc" class="addProduct__label">
-                  <span>Description</span>
-                  <textarea 
-                    id="productDesc"
-                    name="productDesc" 
-                    className="basicInfo__productDesc" 
-                    cols="30" 
-                    rows="10"
-                    onChange={this.handleChange}
-                  >
-                  </textarea>
-                </label>
-
-              </div>
-              
-            </fieldset>
-
-            {/* MEDIA  */}
-            <fieldset>
-
-              <div>
-
-                <legend>Media</legend>
-                <button>Add media from URL</button>
-                <ul className="media__URLoptions">
-                  <li>Add image from URL</li>
-                  <li>Embed YouTube Video</li>
-                </ul>
-
-              </div>
-
-              <div>
-
-                <img src={this.state.photo} alt=""/>
-                <label htmlFor="photo">
-                  <span className="sr-only">Upload a photo</span>
-                  <input 
-                    type="file" 
-                    id="photo" 
-                    name="photo"
-                    onChange={this.handleChange}
-                  />
-                </label>
-                <p>or drop files to upload</p>
-
-              </div>
-
-            </fieldset>
-
-            {/* PRICING  */}
-            <fieldset>
-              
-              <div>
-
-                <legend>Pricing</legend>
-
-                <label htmlFor="price">
-                  <span>Price</span>
-                  <input 
-                    type="text" 
-                    id="price" 
-                    name="price" 
-                    onChange={this.handleChange} 
-                  />
-                </label>
-
-                <label htmlFor="comparePrice">
-                  <span>Compare at price</span>
-                  <input 
-                    type="text" 
-                    id="comparePrice" 
-                    name="comparePrice" 
-                    onChange={this.handleChange} 
-                  />
-                </label>
-
-              </div>
-
-              <div>
-
-                <div>
-
-                  <label htmlFor="costPerItem">
-                    <span>Cost per Item</span>
+                  <legend className="addProduct__legend">Basic Info</legend>
+                  
+                  <label htmlFor="productTitle" class="addProduct__label">
+                    <span>Title</span>
                     <input 
                       type="text" 
-                      id="costPerItem"
-                      name="costPerItem"
+                      id="productTitle" 
+                      name="productTitle" 
+                      className="basicInfo__productTitle" 
                       onChange={this.handleChange}
                     />
                   </label>
-                  <p>Customers won't see this</p>
+
+                  <label htmlFor="productDesc" class="addProduct__label">
+                    <span>Description</span>
+                    <textarea 
+                      id="productDesc"
+                      name="productDesc" 
+                      className="basicInfo__productDesc" 
+                      cols="30" 
+                      rows="10"
+                      onChange={this.handleChange}
+                    >
+                    </textarea>
+                  </label>
 
                 </div>
-
-                <div>
-
-                  <p>
-                    <span>Margin</span>
-                    <span>-</span>
-                  </p>
-                  <p>
-                    <span>Profit</span>
-                    <span>-</span>
-                  </p>
-                  
-
-                </div>
-
                 
-                <label htmlFor="tax">
-                  <input 
-                    type="checkbox" 
-                    id="tax" 
-                    name="tax"
-                    onChange={this.handleCheck} 
-                  />
-                  <span>Charge tax on this product</span>
-                </label>
+              </fieldset>
 
-              </div>
+              {/* MEDIA  */}
+              <fieldset className="addProduct__fieldset">
 
-            </fieldset>
+                <div className="addProduct__subFieldsetContainer">
 
-            {/* INVENTORY  */}
-            <fieldset>
-
-              <div>
-
-                <legend>Inventory</legend>
-
-                <label htmlFor="SKU">
-                  <span>SKU (Stock Keeping Unit)</span>
-                  <input 
-                    type="text" 
-                    id="SKU"
-                    name="SKU"
-                    onChange={this.handleChange}
-                  />
-                </label>
-
-                <label htmlFor="barcode">
-                  <span>Barcode (ISBN, UPC, GTIN, etc.)</span>
-                  <input 
-                    type="text" 
-                    id="barcode" 
-                    name="barcode" 
-                    onChange={this.handleChange} 
-                  />
-                </label>
-
-                <label htmlFor="quantity">
-                  <input 
-                    type="checkbox" 
-                    id="quantity" 
-                    name="quantity" 
-                    onChange={this.handleCheck} 
-                  />
-                  <span>Track Quantity</span>
-                </label>
-
-              </div>
-
-            </fieldset>
-
-            {/* VARIANTS  */}
-            <fieldset>
-              <div>
-
-                <legend>Variants</legend>
-                <label htmlFor="variantOptionsCheck">
-                  <input type="checkbox" id="variantOptionsCheck" name="variantOptionsCheck" onChange={this.handleCheck} />
-                  <span>This product has multiple options, like different sizes or colors</span>
-                </label>
-
-              </div>
-
-              {/* When the Variants checkbox is checked, more Variant form elements will appear */}
-              {
-                this.state.variantOptionsCheck 
-                
-                && 
-
-                <div className="variants__options">
-
-                  <h4>Options</h4>
-
-                  <ul>
-
-                    <li>
-
-                      <label htmlFor="variantOptionSize--one">
-                        <span>Option 1</span>
-                        <input type="text" id="variantOptionSize--one" />
-                      </label>
-
-                      <label htmlFor="variantOptionsList--one">
-                        <span>Option 1 List</span>
-                        <input type="text" id="variantOptionsList--one" placeholder="Separate options with a comma" />
-                      </label>
-
-                    </li>
-
+                  <legend className="addProduct__legend">Media</legend>
+                  <button>Add media from URL</button>
+                  <ul className="media__URLoptions">
+                    <li>Add image from URL</li>
+                    <li>Embed YouTube Video</li>
                   </ul>
 
-                  {/* This button would need to dynamically add another option to the list above */}
-                  <button>Add another option</button>
+                </div>
+
+                <div className="addProduct__subFieldsetContainer">
+
+                  <img src={this.state.photo} alt=""/>
+                  <label htmlFor="photo">
+                    <span className="sr-only">Upload a photo</span>
+                    <input 
+                      type="file" 
+                      id="photo" 
+                      name="photo"
+                      onChange={this.handleChange}
+                    />
+                  </label>
+                  <p>or drop files to upload</p>
 
                 </div>
 
-              }
+              </fieldset>
 
-            </fieldset>
+              {/* PRICING  */}
+              <fieldset className="addProduct__fieldset">
+                
+                <div className="addProduct__subFieldsetContainer">
 
-            {/* SEO  */}
-            <fieldset>
+                  <legend className="addProduct__legend">Pricing</legend>
 
-              <div>
-
-                <div>
-
-                  <legend>Search Engine listing preview</legend>
-
-                  <button onClick={this.handleClick}>Edit website SEO</button>
-
-                </div>
-
-                <p>
-                  Add a title and description to see how this product might appear in a search engine listing
-                </p>
-
-              </div>
-
-              {
-                this.state.SEOoptions
-
-                &&
-
-                <div className="SEO__options">
-
-                  <div>
-
-                    <label htmlFor="pageTitle">
-                      <span>Page title</span>
-                      <input type="text" id="pageTitle" />
-                    </label>
-
-                    <p>0 of 70 characters used</p>
-
-                  </div>
-
-                  <div>
-
-                    <label htmlFor="SEO__description">
-                      <span>Description</span>
-                      <input type="text" id="SEO__description" />
-                    </label>
-
-                    <p>0 of 320 characters used</p>
-
-                  </div>
-
-                  <div>
-
-                    <label htmlFor="SEO__URL">
-                      <span>URL and handle</span>
-                      <input type="text" id="SEO__URL" placeholder="link from STATE" />
-                    </label>
-
-                  </div>
-
-                </div>
-              }
-
-            </fieldset>
-
-          </div>
-
-          {/* SIDEBAR  */}
-          <div>
-
-            {/* ORGANIZATION  */}
-            <fieldset>
-
-              <div>
-
-                <legend>Organization</legend>
-
-                <div>
-
-                  <label htmlFor="productType">
-                    <span>Product type</span>
+                  <label htmlFor="price">
+                    <span>Price</span>
                     <input 
                       type="text" 
-                      id="productType"
-                      name="productType"
+                      id="price" 
+                      name="price" 
                       onChange={this.handleChange} 
                     />
                   </label>
-                  <button>Arrows Image</button>
+
+                  <label htmlFor="comparePrice">
+                    <span>Compare at price</span>
+                    <input 
+                      type="text" 
+                      id="comparePrice" 
+                      name="comparePrice" 
+                      onChange={this.handleChange} 
+                    />
+                  </label>
+
+                </div>
+
+                <div className="addProduct__subFieldsetContainer">
+
+                  <div>
+
+                    <label htmlFor="costPerItem">
+                      <span>Cost per Item</span>
+                      <input 
+                        type="text" 
+                        id="costPerItem"
+                        name="costPerItem"
+                        onChange={this.handleChange}
+                      />
+                    </label>
+                    <p>Customers won't see this</p>
+
+                  </div>
+
+                  <div>
+
+                    <p>
+                      <span>Margin</span>
+                      <span>-</span>
+                    </p>
+                    <p>
+                      <span>Profit</span>
+                      <span>-</span>
+                    </p>
+                    
+
+                  </div>
+
+                  
+                  <label htmlFor="tax">
+                    <input 
+                      type="checkbox" 
+                      id="tax" 
+                      name="tax"
+                      onChange={this.handleCheck} 
+                    />
+                    <span>Charge tax on this product</span>
+                  </label>
+
+                </div>
+
+              </fieldset>
+
+              {/* INVENTORY  */}
+              <fieldset className="addProduct__fieldset">
+
+                <div className="addProduct__subFieldsetContainer">
+
+                  <legend className="addProduct__legend">Inventory</legend>
+
+                  <label htmlFor="SKU">
+                    <span>SKU (Stock Keeping Unit)</span>
+                    <input 
+                      type="text" 
+                      id="SKU"
+                      name="SKU"
+                      onChange={this.handleChange}
+                    />
+                  </label>
+
+                  <label htmlFor="barcode">
+                    <span>Barcode (ISBN, UPC, GTIN, etc.)</span>
+                    <input 
+                      type="text" 
+                      id="barcode" 
+                      name="barcode" 
+                      onChange={this.handleChange} 
+                    />
+                  </label>
+
+                  <label htmlFor="quantity">
+                    <input 
+                      type="checkbox" 
+                      id="quantity" 
+                      name="quantity" 
+                      onChange={this.handleCheck} 
+                    />
+                    <span>Track Quantity</span>
+                  </label>
+
+                </div>
+
+              </fieldset>
+
+              {/* VARIANTS  */}
+              <fieldset className="addProduct__fieldset">
+
+                <div className="addProduct__subFieldsetContainer">
+
+                  <legend className="addProduct__legend">Variants</legend>
+                  <label htmlFor="variantOptionsCheck">
+                    <input type="checkbox" id="variantOptionsCheck" name="variantOptionsCheck" onChange={this.handleCheck} />
+                    <span>This product has multiple options, like different sizes or colors</span>
+                  </label>
+
+                </div>
+
+                {/* When the Variants checkbox is checked, more Variant form elements will appear */}
+                {
+                  this.state.variantOptionsCheck 
+                  
+                  && 
+
+                  <div className="variants__options">
+
+                    <h4>Options</h4>
+
+                    <ul>
+
+                      <li>
+
+                        <label htmlFor="variantOptionSize--one">
+                          <span>Option 1</span>
+                          <input type="text" id="variantOptionSize--one" />
+                        </label>
+
+                        <label htmlFor="variantOptionsList--one">
+                          <span>Option 1 List</span>
+                          <input type="text" id="variantOptionsList--one" placeholder="Separate options with a comma" />
+                        </label>
+
+                      </li>
+
+                    </ul>
+
+                    {/* This button would need to dynamically add another option to the list above */}
+                    <button>Add another option</button>
+
+                  </div>
+
+                }
+
+              </fieldset>
+
+              {/* SEO  */}
+              <fieldset className="addProduct__fieldset">
+
+                <div className="addProduct__subFieldsetContainer">
+
+                  <div>
+
+                    <legend className="addProduct__legend">Search Engine listing preview</legend>
+
+                    <button onClick={this.handleClick}>Edit website SEO</button>
+
+                  </div>
+
+                  <p>
+                    Add a title and description to see how this product might appear in a search engine listing
+                  </p>
+
+                </div>
+
+                {
+                  this.state.SEOoptions
+
+                  &&
+
+                  <div className="SEO__options">
+
+                    <div>
+
+                      <label htmlFor="pageTitle">
+                        <span>Page title</span>
+                        <input type="text" id="pageTitle" />
+                      </label>
+
+                      <p>0 of 70 characters used</p>
+
+                    </div>
+
+                    <div>
+
+                      <label htmlFor="SEO__description">
+                        <span>Description</span>
+                        <input type="text" id="SEO__description" />
+                      </label>
+
+                      <p>0 of 320 characters used</p>
+
+                    </div>
+
+                    <div>
+
+                      <label htmlFor="SEO__URL">
+                        <span>URL and handle</span>
+                        <input type="text" id="SEO__URL" placeholder="link from STATE" />
+                      </label>
+
+                    </div>
+
+                  </div>
+                }
+
+              </fieldset>
+
+            </div> {/* Main ends */}
+
+            {/* SIDEBAR  */}
+            <div className="addProduct__subFormElement addProduct__subFormSide">
+
+              {/* ORGANIZATION  */}
+              <fieldset className="addProduct__fieldset">
+
+                <div>
+
+                  <legend className="addProduct__legend">Organization</legend>
+
+                  <div>
+
+                    <label htmlFor="productType">
+                      <span>Product type</span>
+                      <input 
+                        type="text" 
+                        id="productType"
+                        name="productType"
+                        onChange={this.handleChange} 
+                      />
+                    </label>
+                    <button>Arrows Image</button>
+
+                  </div>
+
+                  <div>
+
+                    <label htmlFor="productVendor">
+                      <span>Vendor</span>
+                      <input 
+                        type="text" 
+                        id="productVendor"
+                        name="productVendor"
+                        onChange={this.handleChange} 
+                      />
+                    </label>
+                    <button>Arrows Image</button>
+
+                  </div>
 
                 </div>
 
                 <div>
-
-                  <label htmlFor="productVendor">
-                    <span>Vendor</span>
+                  <label htmlFor="productCollections">
+                    <span>Collections</span>
                     <input 
                       type="text" 
-                      id="productVendor"
-                      name="productVendor"
-                      onChange={this.handleChange} 
+                      id="productCollections"
+                      name="productCollections"
                     />
                   </label>
-                  <button>Arrows Image</button>
-
+                  <p>Add this product to a collection so it’s easy to find in your store.</p>
+                  <ul>
+                    {/* Empty list for new collections  */}
+                  </ul>
                 </div>
 
-              </div>
+                <div>
+                  <label htmlFor="tags">
+                    <span>Tags</span>
+                    <input 
+                      type="text" 
+                      id="tags" 
+                      name="tags"
+                      onKeyDown={this.addTags}
+                      
+                    />
+                  </label>
+                  <ul>
+                    {
+                      this.state.tags.map(tag => {
+                        return (
+                          <li>
+                            {tag}
+                          </li>
+                        )
+                      })
+                    }
+                  </ul>
+                </div>
 
-              <div>
-                <label htmlFor="productCollections">
-                  <span>Collections</span>
-                  <input 
-                    type="text" 
-                    id="productCollections"
-                    name="productCollections"
-                  />
-                </label>
-                <p>Add this product to a collection so it’s easy to find in your store.</p>
-                <ul>
-                  {/* Empty list for new collections  */}
-                </ul>
-              </div>
+              </fieldset>
 
-              <div>
-                <label htmlFor="tags">
-                  <span>Tags</span>
-                  <input 
-                    type="text" 
-                    id="tags" 
-                    name="tags"
-                    onKeyDown={this.addTags}
-                     
-                  />
-                </label>
-                <ul>
-                  {
-                    this.state.tags.map(tag => {
-                      return (
-                        <li>
-                          {tag}
-                        </li>
-                      )
-                    })
-                  }
-                </ul>
-              </div>
-
-            </fieldset>
+            </div>
 
           </div>
 
