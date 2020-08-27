@@ -60,7 +60,7 @@ class addProduct extends Component {
 
     return (
       <span>
-        {(((parseInt(price) - parseInt(costPerItem)) / parseInt(price)) * 100)}%
+        {(((parseInt(price) - parseInt(costPerItem)) / parseInt(price)) * 100).toFixed(2)}%
       </span>
     )
 
@@ -114,7 +114,7 @@ class addProduct extends Component {
 
         <h2>Add Product</h2>
 
-        <form action="">
+        <form>
 
           <div className="addProduct__subFormContainer">
 
@@ -159,10 +159,10 @@ class addProduct extends Component {
               {/* MEDIA  */}
               <fieldset className="addProduct__fieldset">
 
-                <div className="addProduct__subFieldsetContainer">
+                <div className="addProduct__subFieldsetContainer media__subFieldsetContainer--title">
 
                   <legend className="addProduct__legend">Media</legend>
-                  <button>Add media from URL</button>
+                  <button className="media__button">Add media from URL<span className="media__arrow">&#10549;</span></button>
                   <ul className="media__URLoptions">
                     <li>Add image from URL</li>
                     <li>Embed YouTube Video</li>
@@ -170,7 +170,7 @@ class addProduct extends Component {
 
                 </div>
 
-                <div className="addProduct__subFieldsetContainer">
+                <div className="addProduct__subFieldsetContainer media__subFieldsetContainer--upload">
 
                   <img src={this.state.photo} alt=""/>
                   <label htmlFor="photo">
@@ -191,11 +191,11 @@ class addProduct extends Component {
               {/* PRICING  */}
               <fieldset className="addProduct__fieldset">
                 
-                <div className="addProduct__subFieldsetContainer">
+                <span><legend className="addProduct__legend pricing__legend">Pricing</legend></span>
 
-                  <legend className="addProduct__legend">Pricing</legend>
+                <div className="addProduct__subFieldsetContainer pricing__subFieldsetContainer--prices">
 
-                  <label htmlFor="price">
+                  <label htmlFor="price" className="pricing__label">
                     <span>Price</span>
                     <input 
                       type="text" 
@@ -205,7 +205,7 @@ class addProduct extends Component {
                     />
                   </label>
 
-                  <label htmlFor="comparePrice">
+                  <label htmlFor="comparePrice" className="pricing__label">
                     <span>Compare at price</span>
                     <input 
                       type="text" 
@@ -217,11 +217,11 @@ class addProduct extends Component {
 
                 </div>
 
-                <div className="addProduct__subFieldsetContainer">
+                <div className="addProduct__subFieldsetContainer pricing__subFieldsetContainer--prices">
 
-                  <div>
+                  <div className="pricing__container--costPerItem">
 
-                    <label htmlFor="costPerItem">
+                    <label htmlFor="costPerItem" className="pricing__label">
                       <span>Cost per Item</span>
                       <input 
                         type="text" 
@@ -234,7 +234,7 @@ class addProduct extends Component {
 
                   </div>
 
-                  <div>
+                  <div className="pricing__container--marginProfit">
 
                     <p>
                       <span>Margin</span>
@@ -267,46 +267,52 @@ class addProduct extends Component {
                   </div>
 
                   
-                  <label htmlFor="tax">
-                    <input 
-                      type="checkbox" 
-                      id="tax" 
-                      name="tax"
-                      onChange={this.handleCheck} 
-                    />
-                    <span>Charge tax on this product</span>
-                  </label>
+                  
 
                 </div>
+
+                <label htmlFor="tax">
+                  <input
+                    type="checkbox"
+                    id="tax"
+                    name="tax"
+                    onChange={this.handleCheck}
+                  />
+                  <span>Charge tax on this product</span>
+                </label>
 
               </fieldset>
 
               {/* INVENTORY  */}
               <fieldset className="addProduct__fieldset">
 
-                <div className="addProduct__subFieldsetContainer">
+                <div className="addProduct__subFieldsetContainer inventory__subFieldsetContainer">
 
                   <legend className="addProduct__legend">Inventory</legend>
+                  
+                  <div className="inventory__container">
 
-                  <label htmlFor="SKU">
-                    <span>SKU (Stock Keeping Unit)</span>
-                    <input 
-                      type="text" 
-                      id="SKU"
-                      name="SKU"
-                      onChange={this.handleChange}
-                    />
-                  </label>
+                    <label htmlFor="SKU" className="inventory__label--SKU">
+                      <span>SKU (Stock Keeping Unit)</span>
+                      <input 
+                        type="text" 
+                        id="SKU"
+                        name="SKU"
+                        onChange={this.handleChange}
+                      />
+                    </label>
 
-                  <label htmlFor="barcode">
-                    <span>Barcode (ISBN, UPC, GTIN, etc.)</span>
-                    <input 
-                      type="text" 
-                      id="barcode" 
-                      name="barcode" 
-                      onChange={this.handleChange} 
-                    />
-                  </label>
+                    <label htmlFor="barcode" className="inventory__label--barcode">
+                      <span>Barcode (ISBN, UPC, GTIN, etc.)</span>
+                      <input 
+                        type="text" 
+                        id="barcode" 
+                        name="barcode" 
+                        onChange={this.handleChange} 
+                      />
+                    </label>
+
+                  </div>
 
                   <label htmlFor="quantity">
                     <input 

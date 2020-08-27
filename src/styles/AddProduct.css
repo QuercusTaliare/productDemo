@@ -43,11 +43,96 @@
   padding: 0 2vw;
 }
 
+/* MEDIA  */
+
+.media__subFieldsetContainer--title {
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.media__button {
+  border: none;
+  color: #006fbb;
+  cursor: pointer;
+}
+
+.media__arrow {
+  font-size: 2.1rem;
+}
 
 .media__URLoptions {
 
   display: none;
 
+}
+
+.media__subFieldsetContainer--upload {
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  margin: 20px 0;
+  padding: 40px 10px;
+  border: dashed 2px darkgrey;
+}
+
+/* PRICING  */
+
+.pricing__subFieldsetContainer--prices {
+  flex-direction: row;
+}
+
+.pricing__label {
+  flex: 1 1 50%;
+
+  display: flex;
+  flex-direction: column;
+
+  /* margin: 10px; */
+}
+
+.pricing__container--costPerItem,
+.pricing__container--marginProfit {
+  flex: 1 1 50%;
+}
+
+.pricing__container--costPerItem {
+  margin: 20px 0;
+}
+
+.pricing__container--marginProfit {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.pricing__container--marginProfit p {
+  display: flex;
+  flex-direction: column;
+}
+
+/* INVENTORY  */
+
+.inventory__subFieldsetContainer {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.inventory__container {
+  display: flex;
+}
+
+.inventory__label--SKU, 
+.inventory__label--barcode {
+  flex: 1 1 50%;
+  
+  display: flex;
+  flex-direction: column;
+
+  margin: 0 10px;
 }
 
 .variants__options {
